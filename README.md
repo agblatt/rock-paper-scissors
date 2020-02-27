@@ -1,8 +1,7 @@
 # rock-paper-scissors
-bo3 rps game
+bo3 rock paper scissors game
 
 ## Usage
-
 from the command-line:
 
 ```
