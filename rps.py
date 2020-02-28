@@ -5,7 +5,13 @@ import random
 
 
 class Game:
+	'''
+	rock paper scissors game class
+	'''
 	def __init__(self):
+		'''
+		init valid moves, win conditions, and scores
+		'''
 		self.moves = ['rock', 'paper', 'scissors']
 		self.conditions = {
 			'rock': 'scissors',
@@ -15,6 +21,14 @@ class Game:
 		self.scores = {'user': 0, 'computer': 0}
 
 	def game_loop(self):
+		'''
+		game loop
+		while scores < 2, loop main functions of game
+			get user and computer choice
+			check who won the round
+
+		if score == 3, display winner and winners score
+		'''
 		while self.scores['user'] != 2 and self.scores['computer'] != 2:
 			userChoice, computerChoice = self.choices()
 			print(f'\nuser picked: {userChoice}\ncomputer picked: {computerChoice}')
@@ -24,6 +38,10 @@ class Game:
 		self.win_message()
 
 	def choices(self):
+		'''
+		gets users choice from valid moves and generates computers choice
+		returns both choices to game_loop
+		'''
 		userChoice = ''
 
 		while userChoice not in self.moves:
@@ -34,6 +52,11 @@ class Game:
 		return userChoice, computerChoice
 
 	def win_condition_check(self, userChoice, computerChoice):
+		'''
+		receives params userChoice : str, and computerChoice : str
+		checks conditions to see who won the round
+			adds 1 to winners score or nothing if theres a tie
+		'''
 		if userChoice == computerChoice:
 			print('--> there has been a tie\n')
 			return
@@ -47,6 +70,9 @@ class Game:
 			return
 
 	def win_message(self):
+		'''
+		displays win message for user whose score == 2
+		'''
 		for player, score in self.scores.items():
 			if score == 2:
 				winner = player
@@ -57,4 +83,5 @@ class Game:
 
 
 if __name__ == '__main__':
+	#run game
 	Game().game_loop()
