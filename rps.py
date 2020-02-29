@@ -30,10 +30,10 @@ class Game:
 		if score == 3, display winner and winners score
 		'''
 		while self.scores['user'] != 2 and self.scores['computer'] != 2:
-			userChoice, computerChoice = self.choices()
-			print(f'\nuser picked: {userChoice}\ncomputer picked: {computerChoice}')
+			user_choice, computer_choice = self.choices()
+			print(f'\nuser picked: {user_choice}\ncomputer picked: {computer_choice}')
 
-			check = self.win_condition_check(userChoice, computerChoice)
+			check = self.win_condition_check(user_choice, computer_choice)
 
 		self.win_message()
 
@@ -42,25 +42,25 @@ class Game:
 		gets users choice from valid moves and generates computers choice
 		returns both choices to game_loop
 		'''
-		userChoice = ''
+		user_choice = ''
 
-		while userChoice not in self.moves:
-			userChoice = input('rock, paper, or scissors? ').lower()
+		while user_choice not in self.moves:
+			user_choice = input('rock, paper, or scissors? ').lower()
 
-		computerChoice = random.choice(self.moves)
+		computer_choice = random.choice(self.moves)
 
-		return userChoice, computerChoice
+		return user_choice, computer_choice
 
-	def win_condition_check(self, userChoice, computerChoice):
+	def win_condition_check(self, user_choice, computer_choice):
 		'''
-		receives params userChoice : str, and computerChoice : str
+		receives params user_choice : str, and computer_choice : str
 		checks conditions to see who won the round
 			adds 1 to winners score or nothing if theres a tie
 		'''
-		if userChoice == computerChoice:
+		if user_choice == computer_choice:
 			print('--> there has been a tie\n')
 			return
-		elif self.conditions[userChoice] == computerChoice:
+		elif self.conditions[user_choice] == computer_choice:
 			print('--> user wins this time\n')
 			self.scores['user'] += 1
 			return
