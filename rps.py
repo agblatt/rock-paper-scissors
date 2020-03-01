@@ -1,4 +1,4 @@
-#bo3 rock paper scissors game
+# bo3 rock paper scissors game
 
 
 import random
